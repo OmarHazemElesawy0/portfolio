@@ -1,0 +1,14 @@
+@use '@/styles/abstracts/variables' as *;
+@use '@/styles/abstracts/mixins' as *;
+
+.container {
+  @include container;
+}
+
+.narrow {
+  max-width: $max-width-narrow;
+}
+
+.wide {
+  max-width: $max-width-wide;
+}

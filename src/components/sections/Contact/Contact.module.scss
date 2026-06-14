@@ -1,0 +1,116 @@
+@use '@/styles/abstracts/variables' as *;
+@use '@/styles/abstracts/mixins' as *;
+@use '@/styles/abstracts/breakpoints' as *;
+
+.section {
+  @include section-padding;
+  position: relative;
+}
+
+.links {
+  display: grid;
+  gap: $space-4;
+  grid-template-columns: 1fr;
+  max-width: 600px;
+  margin-inline: auto;
+  margin-bottom: $space-12;
+
+  @include respond-to('sm') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.cardWrapper {
+  height: 100%;
+}
+
+.card {
+  @include glass-card;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $space-4;
+  padding: $space-8 $space-4;
+  text-align: center;
+  text-decoration: none;
+  height: 100%;
+  transition:
+    background $transition-base,
+    border-color $transition-base,
+    box-shadow $transition-base,
+    color $transition-fast;
+
+  &:hover {
+    @include glass-card-hover;
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.1);
+
+    .iconWrapper {
+      color: $color-accent-light;
+      background: $color-accent-muted;
+      border-color: rgba(99, 102, 241, 0.25);
+    }
+
+    .cardLabel {
+      color: $color-text-primary;
+    }
+
+    .cardHint {
+      color: $color-accent-light;
+    }
+  }
+}
+
+.iconWrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-lg;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid $color-border;
+  @include flex-center;
+  color: $color-text-secondary;
+  transition: color $transition-base, background $transition-base, border-color $transition-base;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+}
+
+.cardLabel {
+  font-size: $text-sm;
+  font-weight: $font-semibold;
+  color: $color-text-secondary;
+  transition: color $transition-fast;
+  letter-spacing: -0.01em;
+}
+
+.cardHint {
+  font-size: $text-xs;
+  color: $color-text-tertiary;
+  transition: color $transition-fast;
+  max-width: 100%;
+}
+
+.cardEmail {
+  font-family: $font-mono;
+  font-size: 0.6875rem; // 11px — keeps the full address on one line
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.footer {
+  text-align: center;
+}
+
+.footerText {
+  font-size: $text-sm;
+  color: $color-text-tertiary;
+  line-height: $leading-normal;
+}
+
+.timezone {
+  font-family: $font-mono;
+  color: $color-text-tertiary;
+}

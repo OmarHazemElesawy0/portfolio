@@ -1,0 +1,31 @@
+@use '@/styles/abstracts/variables' as *;
+@use '@/styles/abstracts/mixins' as *;
+
+.footer {
+  border-top: 1px solid $color-border;
+  padding-block: $space-8;
+}
+
+.inner {
+  @include container;
+  @include flex-between;
+}
+
+.copy {
+  font-size: $text-sm;
+  color: $color-text-tertiary;
+  line-height: $leading-normal;
+}
+
+.toTop {
+  font-size: $text-sm;
+  font-weight: $font-medium;
+  color: $color-text-tertiary;
+  text-decoration: none;
+  letter-spacing: $tracking-wide;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-text-secondary;
+  }
+}

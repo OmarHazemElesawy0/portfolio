@@ -1,0 +1,131 @@
+@use '@/styles/abstracts/variables' as *;
+@use '@/styles/abstracts/mixins' as *;
+@use '@/styles/abstracts/breakpoints' as *;
+
+.section {
+  @include section-padding;
+  position: relative;
+}
+
+.grid {
+  display: grid;
+  gap: $space-6;
+  margin-bottom: $space-10;
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  @include glass-card;
+  padding: $space-8;
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+  transition: background $transition-base, border-color $transition-base;
+
+  &:hover {
+    @include glass-card-hover;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-4;
+}
+
+.indexBadge {
+  font-size: $text-xs;
+  font-weight: $font-medium;
+  color: $color-text-tertiary;
+  font-family: $font-mono;
+  letter-spacing: $tracking-wider;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+}
+
+.institution {
+  font-size: $text-sm;
+  font-weight: $font-semibold;
+  color: $color-accent;
+  letter-spacing: 0;
+}
+
+.location {
+  font-size: $text-xs;
+  color: $color-text-tertiary;
+  text-transform: uppercase;
+  letter-spacing: $tracking-wide;
+  font-weight: $font-medium;
+}
+
+.degree {
+  font-size: $text-base;
+  font-weight: $font-semibold;
+  color: $color-text-primary;
+  letter-spacing: $tracking-tight;
+  line-height: $leading-snug;
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  flex-wrap: wrap;
+}
+
+.period {
+  font-size: $text-sm;
+  color: $color-text-tertiary;
+}
+
+.gpa {
+  display: flex;
+  align-items: baseline;
+  gap: $space-2;
+  padding-top: $space-4;
+  border-top: 1px solid $color-border;
+}
+
+.gpaLabel {
+  font-size: $text-xs;
+  font-weight: $font-medium;
+  color: $color-text-tertiary;
+  text-transform: uppercase;
+  letter-spacing: $tracking-wide;
+  font-family: $font-mono;
+}
+
+.gpaValue {
+  font-size: $text-2xl;
+  font-weight: $font-semibold;
+  letter-spacing: $tracking-tight;
+  @include accent-gradient-text;
+}
+
+.gpaNote {
+  font-size: $text-xs;
+  color: $color-text-tertiary;
+}
+
+.note {
+  padding: $space-6 $space-8;
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  border-left: 2px solid $color-accent;
+  border-radius: $radius-xl;
+
+  p {
+    font-size: $text-sm;
+    color: $color-text-secondary;
+    line-height: $leading-relaxed;
+  }
+}

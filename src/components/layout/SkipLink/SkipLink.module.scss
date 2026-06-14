@@ -1,0 +1,21 @@
+@use '@/styles/abstracts/variables' as *;
+
+.skipLink {
+  position: fixed;
+  top: $space-4;
+  left: $space-4;
+  z-index: 9999;
+  padding: $space-3 $space-6;
+  background: $color-accent;
+  color: #fff;
+  font-weight: $font-medium;
+  font-size: $text-sm;
+  border-radius: $radius-lg;
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform $transition-fast;
+
+  &:focus {
+    transform: translateY(0);
+  }
+}

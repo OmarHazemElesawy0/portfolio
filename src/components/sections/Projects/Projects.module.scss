@@ -1,0 +1,141 @@
+@use '@/styles/abstracts/variables' as *;
+@use '@/styles/abstracts/mixins' as *;
+@use '@/styles/abstracts/breakpoints' as *;
+
+.section {
+  @include section-padding;
+  position: relative;
+}
+
+.grid {
+  display: grid;
+  gap: $space-6;
+  grid-template-columns: 1fr;
+  margin-bottom: $space-10;
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to('lg') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  @include glass-card;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    background $transition-base,
+    border-color $transition-base,
+    box-shadow $transition-slow;
+
+  &:hover {
+    @include glass-card-hover;
+    box-shadow: $shadow-xl;
+  }
+}
+
+// Image placeholder area
+.cardImageArea {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+  background: $color-bg-secondary;
+}
+
+.imagePattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 60%);
+}
+
+.statusBadge {
+  position: absolute;
+  top: $space-4;
+  right: $space-4;
+}
+
+// Card body
+.cardBody {
+  padding: $space-6;
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  flex: 1;
+}
+
+.title {
+  font-size: $text-lg;
+  font-weight: $font-semibold;
+  color: $color-text-primary;
+  letter-spacing: $tracking-tight;
+  line-height: $leading-snug;
+}
+
+.description {
+  font-size: $text-sm;
+  color: $color-text-secondary;
+  line-height: $leading-relaxed;
+  flex: 1;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+}
+
+.tag {
+  display: inline-block;
+  padding: $space-1 $space-2;
+  font-size: $text-xs;
+  font-weight: $font-medium;
+  color: $color-text-tertiary;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: $radius-sm;
+  font-family: $font-mono;
+}
+
+.links {
+  display: flex;
+  gap: $space-4;
+  padding-top: $space-4;
+  border-top: 1px solid $color-border;
+}
+
+.link {
+  font-size: $text-sm;
+  font-weight: $font-medium;
+  color: $color-accent-light;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-text-primary;
+  }
+}
+
+.placeholder {
+  font-size: $text-sm;
+  color: $color-text-tertiary;
+  font-style: italic;
+}
+
+.note {
+  text-align: center;
+  font-size: $text-sm;
+  color: $color-text-tertiary;
+}

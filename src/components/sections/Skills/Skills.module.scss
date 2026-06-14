@@ -1,0 +1,97 @@
+@use '@/styles/abstracts/variables' as *;
+@use '@/styles/abstracts/mixins' as *;
+@use '@/styles/abstracts/breakpoints' as *;
+
+.section {
+  @include section-padding;
+  position: relative;
+}
+
+.grid {
+  display: grid;
+  gap: $space-6;
+  grid-template-columns: 1fr;
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to('lg') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  @include glass-card;
+  padding: $space-8;
+  transition: background $transition-base, border-color $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    @include glass-card-hover;
+  }
+
+  &.frontend {
+    &:hover {
+      box-shadow: 0 0 40px rgba(99, 102, 241, 0.08);
+    }
+  }
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  margin-bottom: $space-6;
+  padding-bottom: $space-6;
+  border-bottom: 1px solid $color-border;
+}
+
+.categoryIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-md;
+  background: $color-accent-muted;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  color: $color-accent-light;
+}
+
+.categoryTitle {
+  font-size: $text-base;
+  font-weight: $font-semibold;
+  color: $color-text-primary;
+  letter-spacing: -0.01em;
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+  list-style: none;
+}
+
+.tag {
+  display: inline-block;
+  padding: $space-2 $space-3;
+  font-size: $text-xs;
+  font-weight: $font-medium;
+  color: $color-text-secondary;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  cursor: default;
+  transition:
+    color $transition-fast,
+    background $transition-fast,
+    border-color $transition-fast;
+  font-family: $font-mono;
+  letter-spacing: 0;
+
+  &:hover {
+    color: $color-accent-light;
+    background: $color-accent-muted;
+    border-color: rgba(99, 102, 241, 0.25);
+  }
+}

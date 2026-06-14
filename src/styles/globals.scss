@@ -1,0 +1,28 @@
+@use '@/styles/abstracts/variables' as *;
+@use '@/styles/abstracts/mixins' as *;
+@use '@/styles/abstracts/breakpoints' as *;
+@use '@/styles/base/reset';
+@use '@/styles/base/root';
+@use '@/styles/base/typography';
+@use '@/styles/base/animations';
+
+// Selection
+::selection {
+  background: $color-accent-muted;
+  color: $color-accent-light;
+}
+
+// Focus visible
+:focus-visible {
+  @include focus-ring;
+}
+
+// Scrollbar
+html {
+  @include scrollbar-thin;
+}
+
+// Smooth anchor scroll offset for fixed nav
+:target {
+  scroll-margin-top: calc(#{$nav-height} + 2rem);
+}

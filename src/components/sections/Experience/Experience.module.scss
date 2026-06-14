@@ -1,0 +1,145 @@
+@use '@/styles/abstracts/variables' as *;
+@use '@/styles/abstracts/mixins' as *;
+@use '@/styles/abstracts/breakpoints' as *;
+
+.section {
+  @include section-padding;
+  position: relative;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 0 $space-8;
+  position: relative;
+
+  @include respond-to('md') {
+    grid-template-columns: 40px 1fr;
+    gap: 0 $space-10;
+  }
+}
+
+// Track
+.timelineTrack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: $space-1;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: $color-accent;
+  border: 2px solid $color-bg-primary;
+  box-shadow: 0 0 0 3px $color-accent-muted;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.line {
+  width: 1px;
+  flex: 1;
+  background: linear-gradient($color-border, transparent);
+  margin-top: $space-3;
+  min-height: $space-8;
+}
+
+// Card
+.card {
+  padding-bottom: $space-16;
+}
+
+.cardHeader {
+  margin-bottom: $space-5;
+}
+
+.cardMeta {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+}
+
+.companyRow {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  flex-wrap: wrap;
+}
+
+.company {
+  font-size: $text-xs;
+  font-weight: $font-medium;
+  color: $color-accent;
+  text-transform: uppercase;
+  letter-spacing: $tracking-wider;
+  font-family: $font-mono;
+}
+
+.role {
+  font-size: $text-xl;
+  font-weight: $font-semibold;
+  color: $color-text-primary;
+  letter-spacing: $tracking-tight;
+
+  @include respond-to('md') {
+    font-size: $text-2xl;
+  }
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  flex-wrap: wrap;
+}
+
+.period,
+.location {
+  font-size: $text-sm;
+  color: $color-text-tertiary;
+}
+
+.separator {
+  color: $color-border-strong;
+}
+
+.description {
+  font-size: $text-base;
+  color: $color-text-secondary;
+  line-height: $leading-relaxed;
+  margin-bottom: $space-6;
+  max-width: 680px;
+}
+
+// Highlights
+.highlights {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-3;
+  font-size: $text-sm;
+  color: $color-text-secondary;
+  line-height: $leading-relaxed;
+}
+
+.bullet {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: $color-accent;
+  flex-shrink: 0;
+  margin-top: 8px;
+}

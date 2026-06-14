@@ -1,0 +1,113 @@
+@use '@/styles/abstracts/variables' as *;
+@use '@/styles/abstracts/mixins' as *;
+@use '@/styles/abstracts/breakpoints' as *;
+
+.section {
+  @include section-padding;
+  position: relative;
+}
+
+.body {
+  display: grid;
+  gap: $space-16;
+
+  @include respond-to('lg') {
+    grid-template-columns: 1fr 1fr;
+    gap: $space-20;
+    align-items: start;
+  }
+}
+
+// Highlight cards
+.highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-4;
+}
+
+.highlightCard {
+  @include glass-card;
+  padding: $space-6;
+  transition: background $transition-base, border-color $transition-base;
+
+  &:hover {
+    @include glass-card-hover;
+  }
+}
+
+.highlightIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-bottom: $space-4;
+  border-radius: $radius-md;
+  background: $color-accent-muted;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  color: $color-accent-light;
+}
+
+.highlightTitle {
+  font-size: $text-sm;
+  font-weight: $font-semibold;
+  color: $color-text-primary;
+  margin-bottom: $space-2;
+  letter-spacing: -0.01em;
+}
+
+.highlightBody {
+  font-size: $text-sm;
+  color: $color-text-tertiary;
+  line-height: $leading-relaxed;
+}
+
+// Prose
+.prose {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+}
+
+.proseText {
+  font-size: $text-base;
+  color: $color-text-secondary;
+  line-height: $leading-relaxed;
+
+  strong {
+    color: $color-text-primary;
+    font-weight: $font-semibold;
+  }
+}
+
+// Facts list
+.facts {
+  display: flex;
+  flex-direction: column;
+  margin-top: $space-2;
+  border-top: 1px solid $color-border;
+}
+
+.fact {
+  display: flex;
+  align-items: baseline;
+  gap: $space-4;
+  padding: $space-3 0;
+  border-bottom: 1px solid $color-border;
+  font-size: $text-sm;
+}
+
+.factKey {
+  flex-shrink: 0;
+  width: 84px;
+  color: $color-text-tertiary;
+  font-family: $font-mono;
+  font-size: $text-xs;
+  text-transform: uppercase;
+  letter-spacing: $tracking-wide;
+}
+
+.factVal {
+  color: $color-text-primary;
+  font-weight: $font-medium;
+}

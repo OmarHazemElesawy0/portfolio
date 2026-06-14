@@ -1,0 +1,34 @@
+@use '@/styles/abstracts/variables' as *;
+
+:root {
+  // Colors
+  --color-bg-primary: #{$color-bg-primary};
+  --color-bg-secondary: #{$color-bg-secondary};
+  --color-bg-tertiary: #{$color-bg-tertiary};
+  --color-bg-card: #{$color-bg-card};
+  --color-bg-card-hover: #{$color-bg-card-hover};
+
+  --color-border: #{$color-border};
+  --color-border-strong: #{$color-border-strong};
+
+  --color-text-primary: #{$color-text-primary};
+  --color-text-secondary: #{$color-text-secondary};
+  --color-text-tertiary: #{$color-text-tertiary};
+
+  --color-accent: #{$color-accent};
+  --color-accent-light: #{$color-accent-light};
+  --color-accent-muted: #{$color-accent-muted};
+  --color-accent-glow: #{$color-accent-glow};
+
+  // Typography
+  --font-sans: #{$font-sans};
+  --font-mono: #{$font-mono};
+
+  // Nav
+  --nav-height: #{$nav-height};
+
+  // Transitions
+  --transition-fast: #{$transition-fast};
+  --transition-base: #{$transition-base};
+  --transition-slow: #{$transition-slow};
+}

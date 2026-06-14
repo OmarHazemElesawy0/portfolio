@@ -1,0 +1,199 @@
+@use '@/styles/abstracts/variables' as *;
+@use '@/styles/abstracts/mixins' as *;
+@use '@/styles/abstracts/breakpoints' as *;
+
+.section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: $nav-height;
+}
+
+// ─── Background ───────────────────────────────────────────────────────────────
+.bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 100%);
+  animation: grid-fade 1.5s ease-out forwards;
+  opacity: 0;
+}
+
+.gradientOrb1 {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 60vmax;
+  height: 60vmax;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: float 8s ease-in-out infinite;
+}
+
+.gradientOrb2 {
+  position: absolute;
+  top: 10%;
+  right: -15%;
+  width: 50vmax;
+  height: 50vmax;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+  animation: float 10s ease-in-out infinite reverse;
+  animation-delay: -3s;
+}
+
+.gradientOrb3 {
+  position: absolute;
+  bottom: 0;
+  left: 30%;
+  width: 40vmax;
+  height: 40vmax;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: float 12s ease-in-out infinite;
+  animation-delay: -6s;
+}
+
+.noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+// ─── Content ──────────────────────────────────────────────────────────────────
+.content {
+  position: relative;
+  z-index: 1;
+  padding-block: $space-20;
+  max-width: 800px;
+
+  @include respond-to('lg') {
+    padding-block: $space-32;
+  }
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2 $space-3;
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  border-radius: $radius-full;
+  font-size: $text-sm;
+  font-weight: $font-normal;
+  color: $color-text-secondary;
+  margin-bottom: $space-8;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  background: $color-success;
+  border-radius: 50%;
+  animation: pulse-ring 2.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.name {
+  font-size: $text-5xl;
+  font-weight: $font-semibold;
+  color: $color-text-primary;
+  letter-spacing: $tracking-tight;
+  line-height: $leading-none;
+  margin-bottom: $space-6;
+
+  @include respond-to('md') {
+    font-size: $text-6xl;
+  }
+
+  @include respond-to('lg') {
+    font-size: $text-7xl;
+  }
+}
+
+.headline {
+  font-size: $text-2xl;
+  font-weight: $font-semibold;
+  color: $color-text-primary;
+  letter-spacing: $tracking-tight;
+  line-height: $leading-snug;
+  margin-bottom: $space-6;
+
+  @include respond-to('md') {
+    font-size: $text-3xl;
+  }
+
+  @include respond-to('lg') {
+    font-size: $text-4xl;
+  }
+}
+
+.br {
+  display: none;
+
+  @include respond-to('md') {
+    display: block;
+  }
+}
+
+.headlineAccent {
+  @include gradient-text;
+}
+
+.subheadline {
+  font-size: $text-lg;
+  color: $color-text-secondary;
+  line-height: $leading-relaxed;
+  max-width: 520px;
+  margin-bottom: $space-10;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-4;
+  margin-bottom: $space-12;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $space-3;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: $text-sm;
+  color: $color-text-tertiary;
+  font-weight: $font-medium;
+}
+
+.metaDot {
+  width: 5px;
+  height: 5px;
+  background: $color-accent;
+  border-radius: 50%;
+}
+
+.metaDivider {
+  color: $color-border-strong;
+}

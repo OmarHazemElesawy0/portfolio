@@ -1,0 +1,204 @@
+@use '@/styles/abstracts/variables' as *;
+@use '@/styles/abstracts/mixins' as *;
+@use '@/styles/abstracts/breakpoints' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: $nav-height;
+  transition: background $transition-base, border-color $transition-base;
+  border-bottom: 1px solid transparent;
+
+  &.scrolled {
+    background: rgba(8, 8, 8, 0.85);
+    border-bottom-color: $color-border;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+}
+
+.inner {
+  @include container;
+  @include flex-between;
+  height: 100%;
+}
+
+// Logo
+.logo {
+  font-weight: $font-semibold;
+  font-size: $text-base;
+  letter-spacing: -0.02em;
+  color: $color-text-primary;
+  text-decoration: none;
+  transition: opacity $transition-fast;
+  white-space: nowrap;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.logoDot {
+  color: $color-accent;
+}
+
+// Desktop nav
+.nav {
+  display: none;
+
+  @include respond-to('lg') {
+    display: block;
+  }
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+}
+
+.navLink {
+  display: block;
+  padding: $space-2 $space-4;
+  font-size: $text-sm;
+  font-weight: $font-medium;
+  color: $color-text-secondary;
+  border-radius: $radius-md;
+  transition: color $transition-fast, background $transition-fast;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+
+  &:hover {
+    color: $color-text-primary;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  &.active {
+    color: $color-text-primary;
+  }
+}
+
+// CTA
+.ctaLink {
+  display: none;
+  padding: $space-2 $space-5;
+  font-size: $text-sm;
+  font-weight: $font-medium;
+  color: $color-text-primary;
+  background: transparent;
+  border: 1px solid $color-border-strong;
+  border-radius: $radius-lg;
+  text-decoration: none;
+  transition:
+    background $transition-fast,
+    border-color $transition-fast,
+    box-shadow $transition-fast;
+  letter-spacing: -0.01em;
+
+  &:hover {
+    background: $color-bg-card-hover;
+    border-color: rgba(255, 255, 255, 0.24);
+  }
+
+  @include respond-to('lg') {
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+// Mobile toggle
+.menuToggle {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: $space-2;
+  border: none;
+  background: none;
+  cursor: pointer;
+  z-index: 110;
+
+  span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: $color-text-secondary;
+    border-radius: $radius-full;
+    transition: transform $transition-base, opacity $transition-fast, background $transition-fast;
+    transform-origin: center;
+  }
+
+  &.open {
+    span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+      background: $color-text-primary;
+    }
+
+    span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+      background: $color-text-primary;
+    }
+  }
+
+  @include respond-to('lg') {
+    display: none;
+  }
+}
+
+// Mobile menu
+.mobileMenu {
+  position: fixed;
+  inset: $nav-height 0 0 0;
+  z-index: 99;
+  background: rgba(8, 8, 8, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: $space-8 $space-6;
+
+  @include respond-to('lg') {
+    display: none;
+  }
+}
+
+.mobileNavList {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.mobileNavLink {
+  display: block;
+  padding: $space-4 $space-4;
+  font-size: $text-2xl;
+  font-weight: $font-semibold;
+  color: $color-text-secondary;
+  letter-spacing: $tracking-tight;
+  border-radius: $radius-lg;
+  text-decoration: none;
+  transition: color $transition-fast, background $transition-fast;
+
+  &:hover {
+    color: $color-text-primary;
+    background: $color-bg-card;
+  }
+}
+
+// Scroll progress
+.progressBar {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, $color-accent, $color-accent-light);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: none;
+}
