@@ -21,8 +21,12 @@
 // Highlight cards
 .highlights {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: $space-4;
+
+  @include respond-to('sm') {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .highlightCard {

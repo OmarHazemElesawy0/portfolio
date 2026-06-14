@@ -32,7 +32,11 @@
 }
 
 @mixin section-padding {
-  padding-block: $space-24;
+  padding-block: $space-16;
+
+  @include respond-to('md') {
+    padding-block: $space-24;
+  }
 
   @include respond-to('lg') {
     padding-block: $space-32;
